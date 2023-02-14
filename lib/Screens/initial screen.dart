@@ -1,3 +1,4 @@
+import 'package:careers_home_ui_project_application/Screens/portfolio%20screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -179,7 +180,9 @@ class Reg extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10)
                 ),
                 child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Portfolio() ));
+              },
               child: Text(
                 'Continue',
                 style: TextStyle(color: Colors.black),
