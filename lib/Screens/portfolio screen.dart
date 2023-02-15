@@ -1,3 +1,4 @@
+import 'package:careers_home_ui_project_application/Screens/location%20screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -33,11 +34,11 @@ class Portfolio extends StatelessWidget {
           ),
           SizedBox(height: 20,),
          Padding(
-           padding: const EdgeInsets.only(right: 250),
+           padding: const EdgeInsets.only(right: 270,top: 20),
            child: Text('Portfolio',style: TextStyle(color: Colors.white,fontSize: 20),),
          ),
           Padding(
-            padding: const EdgeInsets.only(right: 70),
+            padding: const EdgeInsets.only(right: 125),
             child: Text('Attach images for your completed jobs',style: TextStyle(color: Colors.white,fontSize: 15),),
           ),
           Musics_grid(),
@@ -65,21 +66,23 @@ class Portfolio extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 280),
-            child: Container(
+            child:  Container(
                 height: MediaQuery.of(context).size.height * .06,
                 width: MediaQuery.of(context).size.width * .75,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10)
                 ),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Location() ));
+                  },
                   child: Text(
-                    'Submit',
+                    'Continue',
                     style: TextStyle(color: Colors.black),
                   ),
                   style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(Colors.yellow[600])),
-                )),
+                ))
           )
         ]),
       ),
@@ -98,41 +101,44 @@ class Musics_grid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.all(10.0),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, crossAxisSpacing: 2, mainAxisSpacing: 2),
-        itemCount: images.length,
-        itemBuilder: (BuildContext, int index) {
-          return
-            // Container(color: Colors.black,
-            // child:
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  children: [
-                    Container(
-                      // height: 120, width: 120,
-                      height: MediaQuery.of(context).size.height / 8,
-                      width: MediaQuery.of(context).size.width *.3,
-                      decoration: BoxDecoration(
-                        // boxShadow: [BoxShadow(color: Colors.green,blurRadius: 8,),],
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(images[index]),),
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: GridView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.all(15.0),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, crossAxisSpacing: 8, mainAxisSpacing: 5,childAspectRatio: 1),
+          itemCount: images.length,
+          itemBuilder: (BuildContext, int index) {
+            return
+              // Container(color: Colors.black,
+              // child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        // height: 120, width: 120,
+                        height: MediaQuery.of(context).size.height / 8,
+                        width: MediaQuery.of(context).size.width *.3,
+                        decoration: BoxDecoration(
+                          // boxShadow: [BoxShadow(color: Colors.green,blurRadius: 8,),],
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(images[index]),),
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 5,)
-                  ],
-                ),
-              ],
-            );
-        });
+                      SizedBox(width: 5,)
+                    ],
+                  ),
+                ],
+              );
+          }),
+    );
   }
 }
 
