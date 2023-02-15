@@ -1,4 +1,5 @@
 import 'package:careers_home_ui_project_application/Screens/Navigationbar.dart';
+import 'package:careers_home_ui_project_application/job_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -243,7 +244,8 @@ class Profile extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
+            CustomContain(title: "ceiling", text1: "trivandrum, attukaal", text2: "eldho")
             //
           ],
         ),
@@ -283,6 +285,111 @@ class Profile extends StatelessWidget {
 
           ),
         ],
+      ),
+    );
+  }
+}
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomContain(
+        title: "Ceiling Light Repairing",
+        text1: "Trivandrum,Palayam",
+        text2: "Sudeep",
+      ),
+    );
+  }
+}
+
+class CustomContain extends StatelessWidget {
+  String title;
+  String text1;
+  String text2;
+  CustomContain({
+    required this.title,
+    required this.text1,
+    required this.text2,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Jobdetails() ));
+      }
+      ,
+      child: Container(
+        margin: EdgeInsets.all(20),
+        height: MediaQuery.of(context).size.height * 0.2,
+        width: MediaQuery.of(context).size.width * 3,
+        decoration: BoxDecoration(
+            border: Border.all(color: Color.fromARGB(255, 246, 189, 18)),
+            borderRadius: BorderRadius.circular(20)),
+        child: Stack(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 8, 183, 125),
+                  borderRadius: BorderRadius.circular(5)),
+              width: 50,
+              height: 20,
+              child: Center(child: Text("new")),
+            ),
+            Positioned(top: 40, left: 7, child: Text(title)),
+            Positioned(
+              top: 70,
+              left: 7,
+              child: Row(
+                children: [Icon(Icons.navigation), Text(text1)],
+              ),
+            ),
+            Positioned(
+              top: 90,
+              left: 7,
+              child: Row(
+                children: [Icon(Icons.person), Text(text1)],
+              ),
+            ),
+            Positioned(
+              top: 10,
+              right: 30,
+              left: 200,
+              child: Row(
+                children: [
+                  Text("1d Ago"),
+                  Icon(Icons.favorite),
+                ],
+              ),
+            ),
+            Positioned(
+              top: 40,
+              right: 1,
+              left: 200,
+              child: Column(
+                children: [Text("price per day"), Text("800")],
+              ),
+            ),
+            Positioned(
+              top: 90,
+              right: 1,
+              left: 210,
+              child: Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 255, 226, 59),
+                        borderRadius: BorderRadius.circular(20)),
+                    width: 90,
+                    height: 30,
+                    child: Center(child: Text("View Details")),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

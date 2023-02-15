@@ -1,3 +1,4 @@
+import 'package:careers_home_ui_project_application/Screens/Works%20Tab%20Screens/profile%20page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -104,7 +105,9 @@ class Location extends StatelessWidget {
                                                  color: Colors.yellow, width: 2))),
                                       child: ListTile(
                                         leading: Icon(Icons.location_on,color: Colors.yellow,),
-                                        title: Text("Home",style: TextStyle(color: Colors.yellow,fontWeight: FontWeight.bold),
+                                        title: Center(
+                                          child: Text("Home",style: TextStyle(color: Colors.yellow,fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       )
                                     ),
@@ -142,7 +145,9 @@ class Location extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10)
                               ),
                               child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Profile() ));
+                                },
                                 child: Text(
                                   'Confirm',
                                   style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),
